@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IOTAPAPERZ v1.0</title>
+    <link rel="stylesheet" type="text/css" href="iotapaperz.css">
+    <script type="text/javascript" src="iota.min.js"></script>
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="qrious.min.js"></script>
+    <script type="text/javascript" src="iotapaperz.js"></script>
+</head>
+
+<body>
+
+    <div id="welcome_message">
+        <div id="iota_logo_welcome"></div><br /><br />
+        <span class="logo_font_welcome_1">IOTA</span><span class="logo_font_welcome_2">PAPERZ</span><br /><br />
+        <div id="welcome_text">PAPER WALLET GENERATOR</div>
+
+    </div>
+    <div id="main_container">
+        <div id="menu_bar">
+            <div id="menu_bar_content">
+                <div id="elements">
+                    <div id="logo_container">
+                        <div id="iota_logo"></div>
+                    </div>
+
+                    <div class="element">
+                        <span class="logo_font_1">IOTA</span><span class="logo_font_2">PAPERZ</span>
+                    </div>
+
+                    <div class="element" style="float: right; padding-left: 3%">
+                        <a class="link_elements" href="iotapaperz_offline_standalone.html" download="iotapaperz_offline_standalone.html">OFFLINE-GENERTOR</a>
+                    </div>
+                    <div class="element" style="float: right; padding-left: 3%;">
+                        <a target="_blank" class="link_elements" href="https://github.com/midtskog/iotapaperz">GITHUB</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div id="content">
+            <div id="donate">
+                <span style="user-select:none">DONATE:&nbsp;</span>NXVXWSOFXIXLXCMXWNEFGWQNZFOLBPUBRIS9TXLIOHOVCQQEXROSDXV9RHNNJIHIBLCUMBAAYZYGNNA9CJBDDHBFQZ
+            </div>
+            <div id="content_frame">
+
+                <div id="descriptionText" class="description">STEP 1/5: PICK DESIGN</div>
+                <div id="design_selector">
+                    <div class="center_w100">
+                        <div class="canvas_container">
+                            <canvas id="currencyGraphics" width="709" height="319"></canvas>
+                        </div>
+                    </div>
+                    <div id="tint" onchange="reloadDesign('currencyGraphics')">
+                        <span id="tint_opt_container">
+                            <input type="radio" name="design" id="d0" value="0" checked><label id="ld0" class="tint_text_active" for="d0">[ SEED STORE ]</label>
+                            <input type="radio" name="design" id="d1" value="1"><label id="ld1" class="tint_text" for="d1">[ ONLY QR ]</label>
+                            <input type="radio" name="design" id="d2" value="2"><label id="ld2" class="tint_text" for="d2">[ DETAILED ]</label>
+                        </span>
+                    </div>
+                    <div id="tint" onchange="reloadDesign('currencyGraphics')" style="margin-top:3%;">
+                        <span id="tint_opt_container">
+                            <input type="radio" name="tint" id="t0" value="0" checked><label id="lt0" class="tint_text_active" for="t0">GREEN</label>
+                            <input type="radio" name="tint" id="t1" value="1"><label id="lt1" class="tint_text" for="t1">CYAN</label>
+                            <input type="radio" name="tint" id="t2" value="2"><label id="lt2" class="tint_text" for="t2">VIOLET</label>
+                            <input type="radio" name="tint" id="t3" value="3"><label id="lt3" class="tint_text" for="t3">PURPURA</label>
+                            <input type="radio" name="tint" id="t4" value="4"><label id="lt4" class="tint_text" for="t4">MAGENTA</label>
+                            <input type="radio" name="tint" id="t5" value="5"><label id="lt5" class="tint_text" for="t5">GOLD</label>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="seed_options" class="hidden">
+
+                    <div id="optionsContainer" class="center_w100">
+                        <div id="manual_input_option" class="seed_options_style" onclick="selectInputOption(1)">
+                            <h2>
+                                Manual or copy/paste<span id="chk_1" style="float:right;" class="hidden">&#10004;</span>
+                            </h2>
+                            <p>
+                                Pick this option if you want to manually type in the 81 character seed. But remember
+                                that it is actually "hard" to type in something truly random with a
+                                qwerty-keyboard, as most people statistically favor certain characters based on their
+                                location on the keyboard, and that humans tend to avoid certain combinations such
+                                as recurring characters or characters in sequence (eg. ZZZ and ABC respectively).
+                            </p>
+                            <p>
+                                This is also the option to select if you have already generated a seed somewhere else, like
+                                for example 'Keepass', and want to copy/paste it in here.
+                            </p>
+                        </div>
+                        <div id="random_generator_with_entropy" class="seed_options_style" onclick="selectInputOption(2)">
+                            <h2>
+                                Crypto + user entropy <span id="chk_2" style="float:right;" class="hidden">&#10004;</span>
+                            </h2>
+                            <p>
+                                With this option, you will use javascript's crypto.getRandomValues() in addition
+                                to user added time entropy. <br />
+                                Each tryte of the seed will randomly switch up to 100 times/sec, and upon user interaction
+                                (entropy as random time by user), a tryte is picked.
+                            </p>
+                            <p>
+                                This option should introduce entropy at a level just as high or higher than for example
+                                random mouse movement.
+                            </p>
+                            <p>
+                                There is also an option to autogenerate, where the user interaction is replaced
+                                by randomizing the interaction time between 130ms and 970ms. Don't use it if you don't trust
+                                the code behind it.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="seed_creator" class="hidden">
+                    <div id="seed_creator_manual" class="center_w100">
+                        <div id="manual_seed_input">
+                            <p class="manual_seed_text">
+                                PASTE OR MANUALLY TYPE IN AN 81 CHARACTER SEED <br /><br />
+                                CHARACTERS ALLOWED: UPPERCASE [A-Z] + [9] (INVALID CHARACTERS WILL BE CORRECTED OR REMOVED)
+                            </p>
+                            <input id="input_seed" type="text" autocomplete="off" oninput="checkManualSeed()" />
+                            <p id="manual_seed_status" class="manual_seed_text">
+                                TRYTES: 0 / 81
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="seed_creator_crypt_entropy" class="center_w100">
+                        <div id="reset_seed_creator" onclick="startCryptoGenerator(true)"><span class="center_v">RESET GENERATOR</span></div>
+                        <div id="auto_generate" onclick="autoGenerateSeed()"><span id="auto_generate_text" class="center_v">AUTOGENERATE</span></div>
+                        <div id="seed_generation_box">
+                            <table id="seed_generation_table"></table>
+                        </div>
+                        <div id="set_tryte" onclick="setTryte(true)"><span id="set_tryte_text" class="center_v">SET TRYTE (0%)</span></div>
+                    </div>
+                </div>
+
+                <div id="generate_address" class="hidden">
+                    <div id="address_options">
+                        <table id="address_options_table">
+                            <tbody>
+                                <tr><td class="td_l">SECURITY LEVEL</td><td class="td_r"><select disabled onchange="updateAddress(false)" id="sec_opt"><option value="1">81-TRIT</option><option value="2" selected="selected">162-TRIT</option><option value="3">243-TRIT</option></select></td></tr>
+                                <tr><td class="td_l">KEY INDEX</td><td id="key_index" class="td_r"></td></tr>
+                            </tbody>
+                        </table>
+                        <div id="reset_key_index" onclick="alert('Function disabled')//resetKeyIndex()">RESET KEY INDEX</div>
+                        <div id="increase_index" onclick="alert('Function disabled')//updateAddress(true)">GENERATE NEXT ADDRESS</div>
+                    </div>
+                    <div id="seed_and_address">
+                        <table id="seed_address_table" class="hidden">
+                            <tbody>
+                                <tr><td class="td_l_2">SEED: </td><td class="td_l_2" id="seed_print"></td></tr>
+                                <tr><td class="td_l_2">ADDRESS: </td><td class="td_l_2" id="address_print"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p id="address_note"></p>
+                </div>
+
+                <div id="print_save" class="hidden">
+                    <div class="center_w100">
+                        <div class="canvas_container">
+                            <canvas id="currency_graphics_print" width="709" height="319"></canvas>
+                        </div>
+
+                        <div id="custom_note" class="hidden" style="width: 100%;">
+                            <table style="margin: 1% auto">
+                                <tbody>
+                                    <tr>
+                                        <td>Type in a customized note, eg. "3.333Gi":</td>
+                                        <td><input id="input_custom_note" type="text" autocomplete="off" oninput="writeCustomNote()" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="custom_note" style="width: 100%;">
+
+                            <table style="width:709px; margin: 1% auto;">
+                                <tbody>
+                                    <tr>
+                                        <td class="printSelectWPP"><select id="walletsPerPageOpt"><option selected="selected" value="1">1 WALLET/PAGE</option><option value="2">2 WALLETS/PAGE</option><option value="3">3 WALLETS/PAGE</option></select></td>
+                                        <td><div class="print_save_buttons" onclick="printPaperWallet()">PRINT</div></td>
+                                        <td><a id="downloadAsImage" href=""><div class="print_save_buttons">SAVE AS IMAGE</div></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="next_prev">
+                    <div id="next_prev_buttons">
+                        <div id="next" onclick="next()">NEXT</div>
+                        <div id="prev" onclick="prev()">PREV</div>
+                    </div>
+                    <div id="author">by Amund Midtskog (iotatangle.slack.com @ammi)</div>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div id="loading_screen"></div>
+
+    <script>
+        window.onload = function () {
+            init();
+        }
+    </script>
+</body>
+
+</html>

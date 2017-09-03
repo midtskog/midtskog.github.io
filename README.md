@@ -10,7 +10,7 @@ QRius (qrious.min.js 4.0.2)
 IOTA lib (latest iota.min.js)
 JQuery (jquery-3.2.1.min.js).
 
--How to use it:
+- How to use it:
 A paper wallet is a way of "remembering" a specific seed and or address which can be used for receiving values or non-value transactions. So if you are vary of storing this information digitally (in a text file, in the cloud etc), a paper wallet could store this for you "off-the-grid". Then of course, you would have to physically store the paper wallet somewhere safe, and perhaps have two copies of the same paper wallet stored at two different locations to minimize the chance of information destruction.
 
 - STEP 1, pick design:
@@ -20,7 +20,7 @@ Here you choose what kind of information the paper wallet should contain.
 [DETAILED] will contain same two QRs from [ONLY QR] in addition to having both seed and address as plain text.
 Green, cyan, violet...etc are the colors you can pick for the paper wallet. Pick the one you find most appealing!
 
--STEP 2, seed method:
+- STEP 2, seed method:
 Now, you choose how the seed should be provided. If you want to type all the 81 characters (trytes) yourself, or if you have generated a seed with eg. KeePass, then use the manual option.
 If you think that you are bad at pressing random keys on your keyboard, then use the crypto/entropy option. If you pick this one - you simply click "SET TRYTE" 81 times. For each cell it will generate random chars (A-Z + 9) about 100 times each second (with javascript.crypto), and the user is "deciding" which last random tryte will be set upon interaction (SET TRYTE).
 Optionally you can click auto-generate, which will reset the matrix and do the user interaction for you. You can also combine auto-generate and set tryte, so the tryte determination is both artificial and organic.

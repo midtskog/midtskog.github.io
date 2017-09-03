@@ -2,6 +2,7 @@
 All in one IOTA paper wallet generator, capable of running offline.
 
 The service is hosted here: https://midtskog.github.io/
+
 If you want the application to run offline, then simply click the "offline generator" in the top right corner which will download a single html file with all scripts, css and graphics baked into it. The application can run completely without internet connection as there are no server-client requests/responses going on.
 A precursor for using this is that you have installed a modern HTML5 capable web-browser, preferably the latest versions of Chrome or Safari. I have tested it in Microsoft Edge as well, and it seems to render it just fine there. If you are an IE user, I offer no guarantees that you will experience the application the way I designed it.
 

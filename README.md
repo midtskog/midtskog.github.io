@@ -44,5 +44,6 @@ SEEDS are 81 in length, ADDRESSES are 90 in length (well...with checksums).
 The seed is printed with ECC option "H", which means that the QR is more robust and will validate even if it gets dirty and some parts of it becomes unreadable.
 The address is printed with ECC option "Q", which is slightly less tolerant of unreadable parts - but still quite robust.
 More info here: http://www.qrcode.com/en/about/error_correction.html
+
 This is the initial release, so the service might get some modifications in the future - all depending on the feedback I receive.
 Happy printing!

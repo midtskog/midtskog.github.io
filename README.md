@@ -8,7 +8,7 @@ A precursor for using this is that you have installed a modern HTML5 capable web
 Dependencies inside the project are:
 QRius (qrious.min.js 4.0.2)
 IOTA lib (latest iota.min.js)
-JQuery (jquery-3.2.1.min.js).
+JQuery (jquery-3.2.1.min.js)
 
 - How to use it:
 A paper wallet is a way of "remembering" a specific seed and or address which can be used for receiving values or non-value transactions. So if you are vary of storing this information digitally (in a text file, in the cloud etc), a paper wallet could store this for you "off-the-grid". Then of course, you would have to physically store the paper wallet somewhere safe, and perhaps have two copies of the same paper wallet stored at two different locations to minimize the chance of information destruction.

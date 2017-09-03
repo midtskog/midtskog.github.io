@@ -31,7 +31,6 @@ Based on the option you picked in STEP 2, you will either see a text input field
 
 - STEP 4, derive address:
 As of now, I have disabled user interaction at this step. So depending on the seed you ultimately ended up with, one public (receive) address will be generated using key index 0 and security option 2 (162-trit security). I experienced that using a key index higher than 0 for completely new seeds could screw up receiving values. This is because the paper wallet works on the outside of the tangle (necessary for generating paper wallets offline), and is therefore non-deterministic (regarding the tangle). On the light wallet for example, the key index will stop to increment once it finds the first address without a tx...and for new seeds, this will always be key index 0. So deriving an address from your completely new seed with a key index = 5 for example, then you would need to do 5 deterministic txs with the seed before you can see the value sent to the non-deterministic address you created with key index 5, and that is inconvenient for the end user. Setting different security settings is also inconvenient for the end user, as you would need to for example alter the json config data of the light wallet in order to receive values on addresses that are generated with 81 or 243 trit security.
-
 So for now, no user interaction at step 4. Will see what I do about that in the future.
 
 - STEP 5, print/save:

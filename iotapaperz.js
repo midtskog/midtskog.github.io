@@ -659,7 +659,7 @@ function printCanvas(canvasId) {
     var walletsPerPage = parseInt(document.getElementById("walletsPerPageOpt").value);
 
     let windowContent = '<!DOCTYPE html>';
-    windowContent += '<html style="width: 100%; height: 100%;">';
+    windowContent += '<html>';
     windowContent += '<head><title>IOTAPAPERZ ' + new Date().toLocaleString() + '</title></head>';
     windowContent += '<body>';
     for (var i = 0; i < walletsPerPage; i++)
